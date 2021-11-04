@@ -23,11 +23,27 @@ function makeXHRJSONRequest(methodType, url) {
     });
 }
 
+function showUserCreatedDate(el) {
+    if (typeof el !== 'undefined') {
+        let parentElement = el.parentElement;
+        parentElement.getElementsByClassName('created-date')[0].classList.toggle('hidden');
+    }
+}
+
+function addButtonEvent() {
+    var showDateElements = document.getElementsByClassName('show-date');
+    for (let i = 0; i < showDateElements.length; i++) {
+        showDateElements[i].addEventListener('click', function() {
+            showUserCreatedDate(this);
+        });
+    }
+}
 function getListOfUsers() {
     makeXHRJSONRequest('GET', 'https://615485ee2473940017efaed3.mockapi.io/assessment')
         .then(function(data) {
             var templateScript = Handlebars.compile(document.getElementById('user-detail').innerHTML);
             document.getElementById('user-data').innerHTML = templateScript({userDetails : data });
+            addButtonEvent();
         })
         .catch(function(e) {
             console.error('request failed: ', e.status);

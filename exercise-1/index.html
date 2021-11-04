@@ -15,7 +15,8 @@
                     <img class="avatar" src={{avatar}} alt="image"/>
                     <div>
                         <p class="header3">{{id}} : {{name}}</p>
-                        <div>Date created: {{dateFormat createdAt}}</div>
+                        <div class="created-date hidden">Date created: {{dateFormat createdAt}}</div>
+                        <button class="show-date">Show / Hide Date</button>
                     </div>
                 </div>
                 {{/each}}
