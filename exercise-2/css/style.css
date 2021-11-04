@@ -73,6 +73,10 @@ html body {
     color: #333;
   }
 
+  html body input[type="text"].error-state {
+    border: 1px solid #CF2323;
+  }
+
   /* New Task */
   html body input#new-task   {
     float: left;
@@ -133,4 +137,13 @@ html body {
   label.task-label {
       display: block; 
       margin: 20px 0;
+  }
+
+  /*TODO: instruction says 375px but for demo purpose using tablet width*/
+  @media screen and (min-width: 768px){
+    html body h3,
+    html body label[for='new-task'],
+    html body li {
+      border-bottom: none;
+    }
   }

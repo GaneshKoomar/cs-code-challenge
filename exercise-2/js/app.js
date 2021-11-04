@@ -29,11 +29,17 @@ var createNewTaskElement = function(taskString, arr) { //Q: arr is declared but 
 };
 
 var addTask = function () {
-  var listItemName = taskInput.value || "New Item";
+  var listItemName = taskInput.value;
   var listItem = createNewTaskElement(listItemName);
-  incompleteTasksHolder.appendChild(listItem)
-  bindTaskEvents(listItem, taskCompleted)
-  taskInput.value = "";
+
+  if (listItemName) {
+    taskInput.classList.remove('error-state');
+    incompleteTasksHolder.appendChild(listItem)
+    bindTaskEvents(listItem, taskCompleted)
+    taskInput.value = "";
+  } else {
+    taskInput.classList.add('error-state');
+  }
 };
 
 var editTask = function () {
@@ -83,6 +89,13 @@ var bindTaskEvents = function(taskListItem, checkBoxEventHandler, cb) { //Q: cal
 
 function addControlEventListners() {
   addButton.addEventListener("click", addTask);
+  taskInput.addEventListener("blur", function() {
+    if (taskInput.value) {
+      taskInput.classList.remove('error-state');
+    } else {
+      taskInput.classList.add('error-state');
+    }
+  })
 
   for (let i = 0; i < incompleteTasksHolder.children.length; i++) {
     bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
