@@ -31,7 +31,7 @@ var createNewTaskElement = function(taskString, arr) { //Q: arr is declared but 
 var addTask = function () {
   var listItemName = taskInput.value;
   var listItem = createNewTaskElement(listItemName);
-
+  //Add form validation such that an empty task cannot be submitted.
   if (listItemName) {
     taskInput.classList.remove('error-state');
     incompleteTasksHolder.appendChild(listItem)

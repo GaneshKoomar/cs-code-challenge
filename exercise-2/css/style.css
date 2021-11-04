@@ -139,7 +139,12 @@ html body {
       margin: 20px 0;
   }
 
-  /*TODO: instruction says 375px but for demo purpose using tablet width*/
+  /*
+    TODO: instruction says 375px but for demo purpose using tablet width
+    The form fills 100% width of the screen up until 375px wide
+    The form becomes centered in the page after 375px
+    There should be no horizontal scroll bars present at any width
+  */
   @media screen and (min-width: 768px){
     html body h3,
     html body label[for='new-task'],
